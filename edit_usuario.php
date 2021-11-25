@@ -5,6 +5,10 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $result_usuario = "SELECT * FROM usuarios WHERE id='$id'";
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 $row_usuario =  mysqli_fetch_assoc($resultado_usuario);
+if( $row_usuario['id'] == null) {
+    $_SESSION['msg'] = "<p style='color:red;'>Necessário selecionar um usuário.</p>";
+        header("Location: cad_usuario.php");
+}
 ?>
 
 <!Doctype html>
@@ -14,8 +18,8 @@ $row_usuario =  mysqli_fetch_assoc($resultado_usuario);
         <title>CRUD - Editar</title>
     </head>
     <body>
-        <a href="index.php">Cadastrar</a><br>
-        <a href="listar.php">Listar</a><br>
+        <a href="cad_usuario.php">Cadastrar</a><br>
+        <a href="index.php">Listar</a><br>
         <h1>Editar usuário</h1>
         <?php
             if(isset($_SESSION['msg'])){    

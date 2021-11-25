@@ -12,10 +12,10 @@ if(!empty($id)){
         header("Location: index.php");
     } else {
         $_SESSION['msg'] = "<p style='color:red;'>Usuário não foi apagado.</p>";
-        header("Location: index.php?id=$id");
+        header("Location: index.php");
     }
 } else {
     $_SESSION['msg'] = "<p style='color:red;'>Necessário selecionar um usuário.</p>";
-        header("Location: index.php?id=$id");
+        header("Location: index.php");
 }
 ?>
